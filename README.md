@@ -1,10 +1,10 @@
-##Jets Projects
-###Week 2 Skill Distillery Homework
+## Jets Projects
+### Week 2 Skill Distillery Homework
 
-####Description
+#### Description
 
-####Topics and Technologies Used
+#### Topics and Technologies Used
 
-####How to Run
+#### How to Run
 
-####Lessons Learned
+#### Lessons Learned

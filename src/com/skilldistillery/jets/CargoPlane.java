@@ -12,9 +12,8 @@ public class CargoPlane extends Jets implements CargoCarrier {
 		+ ", Price: " + getPrice() + "]";
 	}
 
-	@Override
 	public void loadCargo() {
-		// TODO Auto-generated method stub
+		System.out.println("Let's load all the cargo");
 		
 	}
 

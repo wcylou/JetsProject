@@ -1,5 +1,7 @@
 package com.skilldistillery.jets;
 
+import java.text.DecimalFormat;
+
 public abstract class Jets {
 
 	private String model;
@@ -19,8 +21,10 @@ public abstract class Jets {
 		for (int i = 0; i < jets.length; i++) {
 			if (jets[i] != null) {
 				double flightTime = jets[i].range / jets[i].speed;
+				DecimalFormat df = new DecimalFormat("#.00");
+				String flightAsString = df.format(flightTime);
 				System.out.println(jets[i]);
-				System.out.println(jets[i].getModel() + " can fly for " + flightTime + " hours");
+				System.out.println(jets[i].getModel() + " can fly for " + flightAsString + " hours\n");
 			}
 		}
 	}
@@ -59,6 +63,11 @@ public abstract class Jets {
 
 	public void setPrice(long price) {
 		this.price = price;
+	}
+
+	public void loadCargo() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

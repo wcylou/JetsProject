@@ -1,6 +1,9 @@
 package com.skilldistillery.jets;
 
 public class CargoPlane extends Jets implements CargoCarrier {
+	
+	public CargoPlane() {
+	}
 
 	public CargoPlane(String model, double speed, int range, long price) {
 		super(model, speed, range, price);
@@ -12,9 +15,9 @@ public class CargoPlane extends Jets implements CargoCarrier {
 		+ ", Price: " + getPrice() + "]";
 	}
 
+	@Override
 	public void loadCargo() {
-		System.out.println("Let's load all the cargo");
-		
+		System.out.println(super.getModel() + " is currently loading up with Cargo");
 	}
 
 }

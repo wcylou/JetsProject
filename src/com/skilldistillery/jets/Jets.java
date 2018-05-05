@@ -8,6 +8,9 @@ public abstract class Jets {
 	private double speed;
 	private int range;
 	private long price;
+	
+	public Jets() {
+	}
 
 	public Jets(String model, double speed, int range, long price) {
 		super();
@@ -66,7 +69,6 @@ public abstract class Jets {
 	}
 
 	public void loadCargo() {
-		// TODO Auto-generated method stub
 		
 	}
 

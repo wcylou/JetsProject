@@ -48,9 +48,9 @@ public class AirField {
 	public void displayMenu() {
 		System.out.println("Welcome to Wilson's Airfield");
 		while (true) {
-			System.out.println("There are currently " + countJets() + " jets and " + countPilots() + " pilots");
+			System.out.println("There are currently " + countJets() + " jets and " + countPilots() + " pilots\n");
 			System.out.println("Menu options:");
-			System.out.println("1. List fleet and pilots\n" + "2. List jets" + "3. List pilots\n"
+			System.out.println("1. List fleet and pilots\n" + "2. List jets\n" + "3. List pilots\n"
 					+ "4. Add a jet to the fleet\n" + "5. Add a pilot to the fleet\n" + "6. View fastest jet\n"
 					+ "7. View jet with longest range\n" + "8. Fly all jets\n" + "9. Load all Cargo Jets\n"
 					+ "10. Dogfight!\n" + "11. Quit");
@@ -81,6 +81,7 @@ public class AirField {
 				Jets.fly(jets);
 				break;
 			case 9:
+				loadCargo();
 				break;
 			case 10:
 				dogfight();
@@ -89,6 +90,18 @@ public class AirField {
 				System.out.println("Exit");
 				System.exit(0);
 				break;
+			}
+		}
+	}
+
+	private void loadCargo() {
+		for (int i = 0; i < jets.length; i++) {
+			CargoPlane cg = new CargoPlane();
+			if (jets[i] != null) {
+				if (jets[i] instanceof CargoPlane) {
+					cg = (CargoPlane) jets[i];
+					cg.loadCargo();
+				}
 			}
 		}
 	}
@@ -127,6 +140,7 @@ public class AirField {
 				System.out.println(jets[i]);
 			}
 		}
+		System.out.println();
 	}
 
 	private void listPilots() {
@@ -137,6 +151,7 @@ public class AirField {
 				System.out.println(pilots2);
 			}
 		}
+		System.out.println();
 	}
 
 	private void addJet() {
@@ -171,7 +186,8 @@ public class AirField {
 			System.out.println("Available pilots");
 			for (int i = countJets() - 1; i < countPilots(); i++) {
 				if (pilots[i] != null) {
-					System.out.println(pilots[i]);
+					int menuChoice = i - countJets() + 2;
+					System.out.println(menuChoice + " " + pilots[i]);
 				}
 			}
 			System.out.println("Pick a pilot to assign to the jet");
@@ -252,6 +268,8 @@ public class AirField {
 	}
 
 	private void dogfight() {
+		FighterJet fg = new FighterJet();
+		boolean alreadyExecuted = false;
 		System.out.println("A virus spreads and all pilots go crazy");
 		int jetsLeft = jets.length;
 		do {
@@ -264,6 +282,15 @@ public class AirField {
 					for (int j = 0; j < jets.length; j++) {
 						if (jets[j] == null || jets[i] == jets[j]) {
 							continue;
+						}
+						if (!alreadyExecuted) {
+							for (int k = 0; k < jets.length; k++) {
+								if (jets[k] instanceof FighterJet) {
+									fg = (FighterJet) jets[k];
+									fg.fight();
+								}
+								alreadyExecuted = true;
+							}
 						}
 						System.out.println(fighter.getClass().getSimpleName() + " " + fighter.getModel()
 								+ " shoots down " + jets[j].getClass().getSimpleName() + " " + jets[i].getModel());

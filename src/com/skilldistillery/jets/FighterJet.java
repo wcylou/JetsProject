@@ -6,6 +6,9 @@ public class FighterJet extends Jets implements CombatReady {
 		super(model, speed, range, price);
 	}
 
+	public FighterJet() {
+	}
+
 	@Override
 	public String toString() {
 		return "FighterJet [Model: " + getModel() + ", Speed: " + getSpeed() + ", Range: " + getRange()
@@ -14,8 +17,7 @@ public class FighterJet extends Jets implements CombatReady {
 
 	@Override
 	public void fight() {
-		
-		
+		System.out.println(super.getModel() + " is ready to fight");
 	}
 	
 	

@@ -20,14 +20,13 @@ public abstract class Jets {
 			if (jets[i] != null) {
 				double flightTime = jets[i].range / jets[i].speed;
 				System.out.println(jets[i]);
-				System.out.println(jets[i].getModel() + " can fly for" + flightTime + "hours");
+				System.out.println(jets[i].getModel() + " can fly for " + flightTime + " hours");
 			}
 		}
 	}
 
-	@Override
 	public String toString() {
-		return "Jets [model=" + model + ", speed=" + speed + ", range=" + range + ", price=" + price + "]";
+		return "Jets [Model: " + model + ", speed: " + speed + ", range: " + range + ", price: " + price + "]";
 	}
 
 	public String getModel() {

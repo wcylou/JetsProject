@@ -8,8 +8,8 @@ public class CargoPlane extends Jets implements CargoCarrier {
 
 	@Override
 	public String toString() {
-		return "CargoPlane [getModel()=" + getModel() + ", getSpeed()=" + getSpeed() + ", getRange()=" + getRange()
-				+ ", getPrice()=" + getPrice() + "]";
+		return "CargoJet [Model: " + getModel() + ", Speed: " + getSpeed() + ", Range: " + getRange()
+		+ ", Price: " + getPrice() + "]";
 	}
 
 	@Override

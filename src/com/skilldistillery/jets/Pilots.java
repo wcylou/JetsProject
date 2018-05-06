@@ -10,6 +10,11 @@ public class Pilots {
 		this.name = name;
 		this.yearsFlying = yearsFlying;
 	}
+	
+	public Pilots(double yearsFlying) {
+		super();
+		this.yearsFlying = yearsFlying;
+	}
 
 	public String getName() {
 		return name;
@@ -29,7 +34,7 @@ public class Pilots {
 
 	@Override
 	public String toString() {
-		return "Pilots [Name: " + name + ", Years of Flying: " + yearsFlying + "]";
+		return "Name: " + name + "\nYears of experience: " + yearsFlying + "\n";
 	}
 
 }

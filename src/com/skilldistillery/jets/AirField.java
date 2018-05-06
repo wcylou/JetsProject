@@ -10,8 +10,8 @@ public class AirField {
 	public Jets[] jets;
 	{
 		jets = new Jets[20];
-		jets[0] = new JetImpl("Basic Jet 100", 500, 6000, 1_500_000);
-		jets[1] = new FighterJet("Lockheed SR-71 Blackbird", 2200.2, 2900, 2_000_000_000);
+		jets[0] = new JetImpl("BasicJet 100", 500, 6000, 1_500_000);
+		jets[1] = new FighterJet("Blackbird", 2200.2, 2900, 2_000_000_000);
 		jets[2] = new FighterJet("Apache", 3000.50, 2000, 1_200_000_000);
 		jets[3] = new CargoPlane("Boeing 747", 628, 8400, 200_500_000);
 		jets[4] = new CargoPlane("Boeing 848", 800, 10000, 2_500_000);
@@ -23,10 +23,10 @@ public class AirField {
 		pilots[0] = new Pilots("Dan the Man", 15);
 		pilots[1] = new Pilots("Smithy Boy", 5);
 		pilots[2] = new Pilots("Olive", 1);
-		pilots[3] = new Pilots("T", 25);
+		pilots[3] = new Pilots("Top Gun", 25);
 		pilots[4] = new Pilots("Stringer", 17);
-		pilots[5] = new Pilots("Bacon", 12);
-		pilots[6] = new Pilots("Pilot100", 10);
+		pilots[5] = new Pilots("Grim Reaper", 12);
+		pilots[6] = new Pilots("Maniac", 10);
 
 		// shuffle pilot order randomly
 		Random rd = new Random();
@@ -42,7 +42,6 @@ public class AirField {
 
 	public void run() {
 		displayMenu();
-
 	}
 
 	public void displayMenu() {
@@ -87,7 +86,7 @@ public class AirField {
 				dogfight();
 				break;
 			case 11:
-				System.out.println("Exit");
+				System.out.println("You have left Wilson's airfield");
 				System.exit(0);
 				break;
 			}
@@ -129,7 +128,7 @@ public class AirField {
 	private void listFleet() {
 		for (int i = 0; i < jets.length; i++) {
 			if (jets[i] != null) {
-				System.out.println("\n" + jets[i] + "\n" + pilots[i] + "\n");
+				System.out.println(jets[i] + "\n" + pilots[i]);
 			}
 		}
 	}
@@ -144,35 +143,34 @@ public class AirField {
 	}
 
 	private void listPilots() {
-		System.out.println("Current list of pilots");
 		for (int i = 0; i < pilots.length; i++) {
-			Pilots pilots2 = pilots[i];
-			if (pilots2 != null) {
-				System.out.println(pilots2);
+			if (pilots[i] != null) {
+				System.out.println(pilots[i]);
 			}
 		}
-		System.out.println();
 	}
 
 	private void addJet() {
 		Jets newJet = null;
-		System.out.println("What is the model of the jet\n" + "1. Fighter Jet\n" + "2. Cargo Plane\n" + "3. Basic Jet");
-		int jetModel = sc.nextInt();
+		System.out.println("What type of jet?\n" + "1. Fighter Jet\n" + "2. Cargo Plane\n" + "3. Basic Jet");
+		int jetType = sc.nextInt();
+		System.out.println("What is the model of the jet");
+		String jetModel = sc.next();
 		System.out.println("What is the speed of the jet");
 		double jetSpeed = sc.nextDouble();
 		System.out.println("What is the range of the jet");
 		int jetRange = sc.nextInt();
 		System.out.println("What is the price of the jet");
 		long jetPrice = sc.nextLong();
-		switch (jetModel) {
+		switch (jetType) {
 		case 1:
-			newJet = new FighterJet("Fighter Jet", jetSpeed, jetRange, jetPrice);
+			newJet = new FighterJet(jetModel, jetSpeed, jetRange, jetPrice);
 			break;
 		case 2:
-			newJet = new CargoPlane("Cargo Plane", jetSpeed, jetRange, jetPrice);
+			newJet = new CargoPlane(jetModel, jetSpeed, jetRange, jetPrice);
 			break;
 		case 3:
-			newJet = new JetImpl("Basic Jet", jetSpeed, jetRange, jetPrice);
+			newJet = new JetImpl(jetModel, jetSpeed, jetRange, jetPrice);
 			break;
 		}
 		for (int i = 0; i < jets.length; i++) {
@@ -187,14 +185,14 @@ public class AirField {
 			for (int i = countJets() - 1; i < countPilots(); i++) {
 				if (pilots[i] != null) {
 					int menuChoice = i - countJets() + 2;
-					System.out.println(menuChoice + " " + pilots[i]);
+					System.out.println(menuChoice + ". " + pilots[i]);
 				}
 			}
 			System.out.println("Pick a pilot to assign to the jet");
 			int pilotChoice = 0;
 			pilotChoice = sc.nextInt();
 			int pickPilotAssign = pilotChoice + countJets() - 2;
-			System.out.println(pilots[pickPilotAssign] + " has been assigned");
+			System.out.println(pilots[pickPilotAssign] + "ASSIGNED");
 			pilots[countJets() - 1] = pilots[pickPilotAssign];
 		} else {
 			System.out.println("There are no free pilots, enlist some more!\n");
@@ -293,7 +291,7 @@ public class AirField {
 							}
 						}
 						System.out.println(fighter.getClass().getSimpleName() + " " + fighter.getModel()
-								+ " shoots down " + jets[j].getClass().getSimpleName() + " " + jets[i].getModel());
+								+ " shoots down " + jets[j].getClass().getSimpleName() + " " + jets[j].getModel());
 						jets[j] = null;
 						jetsLeft--;
 						break;
@@ -307,5 +305,4 @@ public class AirField {
 		double speedInMach = speedMach.getSpeed() / 767.269;
 		return speedInMach;
 	}
-
 }

@@ -7,12 +7,19 @@
 
 #### Topics and Technologies Used
 Polymorphism
+
 Inheritance
+
 Interfaces
+
 For loops
+
 If statements
+
 Switches
+
 Array manipulation
+
 Initialiser blocks
 
 #### How to Run
@@ -25,12 +32,15 @@ Initialiser blocks
 
 #### Lessons Learned
 **1. Arrays:**
-	- Using the random function to randomly assign a pilot to each jet.
-	- Switching array indexes when the user added a jet and then conseuqeuntly having the choice to select which pilot to assign so that the fleet 		would update correctly. This was difficult as I had to work out at exactly what index to switch to and from in the array.
+
+- Using the random function to randomly assign a pilot to each jet.
+- Switching array indexes when the user added a jet and then conseuqeuntly having the choice to select which pilot to assign so that the fleet 		would update correctly. This was difficult as I had to work out at exactly what index to switch to and from in the array.
 	
 **2. Interfaces:**
-	- Loading cargo and fight methods were implemented.
+
+- Loading cargo and fight methods were implemented.
 	
 **3. For loops:**
-	- For dogfight I originally had the first figtherjet iterate through the array until it was the last one standing. I changed this so that the next 	fighterjet would get a go to make it more realistic.
-	- When using the interface to call on the fight method, as it was in the for loop it was calling on it everytime. I used a boolean to ensure it 	only ran through once as it was looping.
+
+- For dogfight I originally had the first figtherjet iterate through the array until it was the last one standing. I changed this so that the next 	fighterjet would get a go to make it more realistic.
+- When using the interface to call on the fight method, as it was in the for loop it was calling on it everytime. I used a boolean to ensure it 	only ran through once as it was looping.
